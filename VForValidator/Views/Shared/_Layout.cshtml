@@ -1,0 +1,327 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VForValidator</title>
+
+    @*------------------------------------------------------------------------------------------------------------------*@
+    <title>Mentor - Bootstrap 4 Admin Dashboard Template</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Admin template that can be used to build dashboards for CRM, CMS, etc." />
+    <meta name="author" content="Potenza Global Solutions" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- app favicon -->
+    <link rel="shortcut icon" href="~/Content/assets/img/favicon.ico">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <!-- plugin stylesheets -->
+    <link href="~/Content/assets/css/vendors.css" rel="stylesheet" type="text/css" />
+    <!-- app style -->
+    <link href="~/Content/assets/css/style.css" rel="stylesheet" type="text/css" />
+    @*------------------------------------------------------------------------------------------------------------------*@
+
+
+</head>
+
+<body>
+    <!-- begin app -->
+    <div class="app">
+        <!-- begin app-wrap -->
+        <div class="app-wrap">
+            <!-- begin pre-loader -->
+            <div class="loader">
+                <div class="h-100 d-flex justify-content-center">
+                    <div class="align-self-center">
+                        <img src="~/Content/assets/img/loader/loader.svg" alt="loader">
+                    </div>
+                </div>
+            </div>
+            <!-- end pre-loader -->
+            <!-- begin app-header -->
+            <header class="app-header top-bar">
+                <!-- begin navbar -->
+                <nav class="navbar navbar-expand-md">
+                    <!-- begin navbar-header -->
+                    <div class="navbar-header d-flex align-items-center">
+                        <a href="javascript:void:(0)" class="mobile-toggle"><i class="ti ti-align-right"></i></a>
+                        <a class="navbar-brand" href="index.html">
+                            <img src="~/Content/assets/img/logo.png" class="img-fluid logo-desktop" alt="logo" />
+                            <img src="~/Content/assets/img/logo-icon.png" class="img-fluid logo-mobile" alt="logo" />
+                        </a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="ti ti-align-left"></i>
+                    </button>
+                    <!-- end navbar-header -->
+                    <!-- begin navigation -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navigation d-flex">
+                            <ul class="navbar-nav nav-right ml-auto">
+                                <li class="nav-item dropdown user-profile">
+                                    <a href="javascript:void(0)" class="nav-link dropdown-toggle " id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="~/Content/assets/img/avtar/profile.png" alt="avtar-img">
+                                        <span class="bg-success user-status"></span>
+                                    </a>
+                                    @Html.Partial("_LoginPartial")
+                                </li>
+                                @*@Html.Partial("_LoginPartial")*@
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end navigation -->
+                </nav>
+                <!-- end navbar -->
+            </header>
+            <!-- end app-header -->
+            <!-- begin app-container -->
+            <div class="app-container">
+                <!-- begin app-nabar -->
+                <aside class="app-navbar">
+                    <!-- begin sidebar-nav -->
+                    @Html.Partial("_SidebarLinks")
+                    <!-- end sidebar-nav -->
+                </aside>
+                <!-- end app-navbar -->
+                <!-- begin app-main -->
+                <div class="app-main" id="main">
+                    <!-- begin container-fluid -->
+                    <div class="container-fluid">
+                        <!-- Notification -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert border-0 alert-primary bg-gradient m-b-30 alert-dismissible fade show border-radius-none" role="alert">
+                                    <strong>Holy guacamole!</strong> You should check in on some of those
+                                    fields below.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <i class="ti ti-close"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-12 col-md-12">
+                                @RenderBody()
+                            </div>
+                        </div>
+
+                        <!-- event Modal (Start) -->
+                        <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="verticalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="verticalCenterTitle">Add New Event</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="modelemail">Event Name</label>
+                                                <input type="email" class="form-control" id="modelemail">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Choose Event Color</label>
+                                                <select class="form-control">
+                                                    <option>Primary</option>
+                                                    <option>Warning</option>
+                                                    <option>Success</option>
+                                                    <option>Danger</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-success">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- event Modal (End) -->
+                    </div>
+                    <!-- end container-fluid -->
+                </div>
+                <!-- end app-main -->
+            </div>
+            <!-- end app-container -->
+            <!-- begin footer -->
+            <footer class="footer">
+                <div class="row">
+                    <div class="col-12 col-sm-6 text-center text-sm-left">
+                        <p>&copy; Copyright 2019. All rights reserved.</p>
+                    </div>
+                    <div class="col  col-sm-6 ml-sm-auto text-center text-sm-right">
+                        <p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
+                    </div>
+                </div>
+            </footer>
+            <!-- end footer -->
+        </div>
+        <!-- end app-wrap -->
+    </div>
+    <!-- end app -->
+    <!-- plugins -->
+    <script src="~/Content/assets/js/vendors.js"></script>
+    <!-- custom app -->
+    <script src="~/Content/assets/js/app.js"></script>
+    <script src="~/Content/assets/izitoast/js/iziToast.min.js"></script>
+    <script type="text/javascript">
+
+
+        $(function () {
+
+
+            $.fn.serializeObject = function () {
+
+                var form = {};
+                $.each($(this).serializeArray(), function (i, field) {
+                    form[field.name] = field.value || "";
+                });
+
+                return form;
+            };
+        });
+
+
+        function successAlert(message) {
+            swal({
+                title: "Sucess!",
+                text: message,
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+                type: "success"
+            }).catch(swal.noop)
+        }
+
+
+        function errorAlert(message) {
+            swal({
+                title: "Error!",
+                text: message,
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-error",
+                type: "error"
+            }).catch(swal.noop)
+        }
+
+
+        function warningAlert(message) {
+            swal({
+                title: "Warning!",
+                text: message,
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-warning",
+                type: "warning"
+            }).catch(swal.noop)
+        }
+
+
+        function infoAlert(message) {
+            swal({
+                title: "Info!",
+                text: message,
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-info",
+                type: "info"
+            }).catch(swal.noop)
+        }
+        function toastrInfo(message) {
+            iziToast.info({
+                title: 'Info',
+                message: message,
+                timeout: 15000,
+                close: true,
+                position: 'topCenter'
+            });
+        }
+        function toastrCustom(heading, message) {
+            iziToast.show({
+                title: heading,
+                message: message,
+                timeout: 40000,
+                close: true,
+                class: 'saadPurpleToastClass',
+                position: 'bottomRight'
+            });
+        }
+
+        function toastrCustomMessage(heading, message) {
+            iziToast.success({
+                title: heading,
+                message: message,
+                timeout: 50000,
+                close: true,
+                position: 'topRight'
+            });
+        }
+
+        function toastrSuccess(message) {
+            iziToast.success({
+                title: 'Success',
+                message: message,
+                timeout: 15000,
+                close: true,
+                position: 'topCenter'
+            });
+        }
+
+
+        function toastrWarning(message) {
+            iziToast.warning({
+                title: 'Warning',
+                message: message,
+                timeout: 15000,
+                close: true,
+                position: 'topCenter'
+            });
+        }
+
+
+        function toastrError(message) {
+            iziToast.error({
+                title: 'Error',
+                message: message,
+                close: true,
+                position: 'bottomRight'
+            });
+        }
+
+        function applyDatatableClass(tableId) {
+            $(tableId).dataTable();
+        }
+
+
+        function insertText(message, idOrClass) {
+
+            $(idOrClass).html("<p>" + message + "</p>");
+        }
+
+        function showElement(sender, condition) {
+            if (condition == true)
+                $(sender).show();
+            else
+                $(sender).hide();
+        }
+
+        function setDisable(sender, condition) {
+
+
+            $(sender).attr("disabled", condition);
+        }
+
+        function setReadonly(sender, condition) {
+
+
+            $(sender).prop("readonly", condition);
+        }
+
+
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

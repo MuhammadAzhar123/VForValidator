@@ -1,0 +1,19 @@
+﻿@{
+    var controller = ViewContext.RouteData.Values["Controller"].ToString() ?? "";
+    var action = ViewContext.RouteData.Values["Action"].ToString() ?? "";
+    var adminRoleCheck = User.IsInRole(VForValidator.Constants.Roles.ApplicationAdmin);
+}
+
+<div class="sidebar-nav scrollbar scroll_light">
+    <ul class="metismenu " id="sidebarNav">
+
+
+        <li class="@(controller == "Home" && action == "Index" ? "active" : "")"><a href="@Url.Action("Index", "Home", null)" aria-expanded="false"><i class="nav-icon ti ti-email"></i><span class="nav-title">Mail</span></a> </li>
+
+        <li class="@(controller == "Account" && action == "Login" ? "active" : "")"><a href="@Url.Action("Login", "Account", null)" aria-expanded="false"><i class="nav-icon ti ti-email"></i><span class="nav-title">Login</span></a> </li>
+
+
+
+
+    </ul>
+</div>
